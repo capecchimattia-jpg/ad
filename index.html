@@ -30,6 +30,7 @@
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
             max-width: 650px;
             width: 85%;
+            cursor: pointer;
         }
 
         .blink-text {
@@ -54,6 +55,7 @@
             cursor: pointer;
             margin-top: 15px;
             box-shadow: 3px 3px 0px #ffffff;
+            display: inline-block;
         }
 
         .boot-btn:hover {
@@ -214,7 +216,6 @@
             border-bottom: 2px solid #ffffff;
         }
 
-        /* STILE PULSANTE ACCEDI DISCORD RETRO */
         .btn-discord {
             background-color: #7289da;
             color: #ffffff;
@@ -278,7 +279,6 @@
             height: 130px;
         }
 
-        /* Overlay Blocco Moduli se non autenticato */
         .auth-locked {
             filter: blur(4px);
             pointer-events: none;
@@ -290,8 +290,8 @@
 <body>
 
 <!-- SCHERMATA DI APERTURA DEL PC (BOOT SCREEN) -->
-<div id="boot-screen">
-    <div class="boot-box">
+<div id="boot-screen" onclick="chiudiBoot()">
+    <div class="boot-box" onclick="chiudiBoot()">
         <pre style="font-size: 10px; color: #00ff00;">
 =====================================================
  GUARDIA COSTIERA - TERMINAL OPERATIVO S.I.T. (1994)
@@ -596,7 +596,7 @@
     </div>
 
     <div class="status-bar">
-        <span>Connesso a: Nodo Porto Cesareo (App ID: 1539013677427073164)</span>
+        <span>Connesso a: Nodo Porto Cesareo (App ID: 1539013677427073164)[cite: 2]</span>
         <span>Visitatori N°: <b>002491</b></span>
     </div>
 </div>
@@ -605,7 +605,6 @@
 <script>
     const DISCORD_APP_ID = "1539013677427073164";[cite: 2]
     
-    // Variabili per memorizzare i dati Discord dell'utente loggato
     let discordUser = {
         name: null,
         id: null,
@@ -620,7 +619,6 @@
         disciplina: "https://discord.com/api/webhooks/1538212413696909403/sp3qZCruIp0Q6j16VMBu4Uf5sRUx_9tHxpRw-cO4WbCV0PyewtYUbiit2QkXys97lSzV"
     };
 
-    // Chiusura Boot Screen
     let bootAperto = true;
     function chiudiBoot() {
         if (!bootAperto) return;
@@ -634,10 +632,7 @@
         if (event.key === "Enter" && bootAperto) { chiudiBoot(); }
     });
 
-    // Simulazione o gestione reale del Login Discord basato su App ID
     function simulaLoginDiscord() {
-        // In un contesto reale OAuth2, qui verrebbe reindirizzato a discord.com/oauth2/authorize?client_id=1539013677427073164...
-        // Simuliamo l'inserimento o il fetch dei dati per continuità operativa immediata nel browser:
         let usernameInserito = prompt("Inserisci il tuo Nickname Discord (es. Utente#1234 o NomeUtente):");
         if (!usernameInserito) return;
         let idInserito = prompt("Inserisci il tuo Discord User ID (opzionale o automatico):", "9876543210987654");
@@ -677,11 +672,9 @@
         }
     }
 
-    // Imposta orario di default per il cartellino
     const now = new Date();
     document.getElementById("cartellinoOra").value = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-    // Invio Candidatura
     document.getElementById("candidaturaForm").addEventListener("submit", function(e) {
         e.preventDefault();
         const btn = document.getElementById("submitBtn");
@@ -703,14 +696,13 @@
                     { name: "🛡️ Serietà e Teamwork", value: document.getElementById("disciplina").value, inline: false },
                     { name: "💬 Discord Account", value: `${discordUser.name} (\`ID: ${discordUser.id}\`)`, inline: false }
                 ],
-                footer: { text: `App ID: ${DISCORD_APP_ID} | Porto Cesareo 1994` },
+                footer: { text: `App ID: ${DISCORD_APP_ID} | Porto Cesareo 1994` },[cite: 2]
                 timestamp: new Date().toISOString()
             }]
         };
         inviaWebhook(webhooks.candidatura, payload, btn, "📤 Trasmetti Candidatura via Telefax", "Candidatura inoltrata con successo!");
     });
 
-    // Rifornimento Armamento
     document.getElementById("rifornimentoForm").addEventListener("submit", function(e) {
         e.preventDefault();
         const btn = document.getElementById("submitArmiBtn");
@@ -726,14 +718,13 @@
                     { name: "📦 Rifornimento", value: document.getElementById("tipoRifornimento").value, inline: false },
                     { name: "📋 Motivo", value: document.getElementById("motivoRifornimento").value, inline: false }
                 ],
-                footer: { text: `App ID: ${DISCORD_APP_ID}` },
+                footer: { text: `App ID: ${DISCORD_APP_ID}` },[cite: 2]
                 timestamp: new Date().toISOString()
             }]
         };
         inviaWebhook(webhooks.rifornimento, payload, btn, "🔫 Richiedi Rifornimento Armeria", "Richiesta armeria trasmessa con successo!");
     });
 
-    // Timbro Cartellino
     document.getElementById("cartellinoForm").addEventListener("submit", function(e) {
         e.preventDefault();
         const btn = document.getElementById("submitCartellinoBtn");
@@ -749,14 +740,13 @@
                     { name: "🪪 Matricola", value: document.getElementById("cartellinoMatricola").value, inline: true },
                     { name: "⏰ Ora Timbro", value: document.getElementById("cartellinoOra").value, inline: true }
                 ],
-                footer: { text: `App ID: ${DISCORD_APP_ID}` },
+                footer: { text: `App ID: ${DISCORD_APP_ID}` },[cite: 2]
                 timestamp: new Date().toISOString()
             }]
         };
         inviaWebhook(webhooks.cartellino, payload, btn, "⏱️ Timbra Cartellino Digitale", "Timbro registrato con successo!");
     });
 
-    // Ferie
     document.getElementById("ferieForm").addEventListener("submit", function(e) {
         e.preventDefault();
         const btn = document.getElementById("submitFerieBtn");
@@ -771,14 +761,13 @@
                     { name: "🗓️ Periodo", value: `Dal ${document.getElementById("ferieDal").value} al ${document.getElementById("ferieAl").value}`, inline: false },
                     { name: "📝 Motivazione", value: document.getElementById("ferieMotivo").value, inline: false }
                 ],
-                footer: { text: `App ID: ${DISCORD_APP_ID}` },
+                footer: { text: `App ID: ${DISCORD_APP_ID}` },[cite: 2]
                 timestamp: new Date().toISOString()
             }]
         };
         inviaWebhook(webhooks.ferie, payload, btn, "🏖️ Invia Richiesta Ferie", "Richiesta ferie inviata!");
     });
 
-    // Rapporto Disciplinare
     document.getElementById("disciplinareForm").addEventListener("submit", function(e) {
         e.preventDefault();
         const btn = document.getElementById("submitDiscBtn");
@@ -793,7 +782,7 @@
                     { name: "⚠️ Infrattore", value: document.getElementById("discInfrattore").value, inline: true },
                     { name: "📄 Dettagli", value: document.getElementById("discDescrizione").value, inline: false }
                 ],
-                footer: { text: `App ID: ${DISCORD_APP_ID}` },
+                footer: { text: `App ID: ${DISCORD_APP_ID}` },[cite: 2]
                 timestamp: new Date().toISOString()
             }]
         };
