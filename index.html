@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMA VERTICE RP — GTA V FiveM Server</title>
+    <!-- Font GTA Style: Pricedown, Teko & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,800;0,900;1,900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ============================================================
+           ROMA VERTICE RP — GTA V / FIVEM CUSTOM STYLE
+           ============================================================ */
+        
         :root {
             --primary: #ff003c;
             --primary-glow: rgba(255, 0, 60, 0.6);
@@ -16,17 +21,10 @@
             --card-bg: rgba(12, 13, 18, 0.88);
             --card-border: rgba(255, 0, 60, 0.3);
             --text-main: #f0f0f0;
-            --accent-yellow: #ff9900;
+            --accent-yellow: #f1c40f;
             --accent-blue: #0088ff;
             --accent-gdf: #d4af37;
             --accent-med: #00e676;
-            
-            /* Colori specifici dell'interfaccia Regolamento */
-            --reg-bg: #120b05;
-            --reg-card-bg: rgba(18, 11, 5, 0.92);
-            --reg-border: #804000;
-            --reg-accent: #ff9900;
-            --reg-text-muted: #b3a090;
         }
 
         * {
@@ -40,6 +38,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             overflow-x: hidden;
+            /* Sfondo Roma in stile GTA V con Dark Overlay */
             background-image: 
                 linear-gradient(to bottom, rgba(7, 7, 9, 0.75), rgba(7, 7, 9, 0.95)),
                 url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1920');
@@ -48,7 +47,7 @@
             background-position: center;
         }
 
-        /* NAVBAR */
+        /* NAVBAR STILE HUD GTA */
         header {
             position: fixed;
             top: 0;
@@ -150,11 +149,17 @@
             color: #fff;
             margin-bottom: 20px;
             box-shadow: 0 0 20px var(--primary-glow);
+            animation: pulse 1.8s infinite alternate;
         }
 
         .hero-banner span {
             display: inline-block;
             transform: skewX(10deg);
+        }
+
+        @keyframes pulse {
+            0% { border-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow); }
+            100% { border-color: #ff5577; box-shadow: 0 0 25px var(--primary-glow); }
         }
 
         .hero h1 {
@@ -173,6 +178,7 @@
             color: var(--primary);
             display: block;
             font-size: 1.1em;
+            -webkit-text-stroke: 1px #000;
         }
 
         .hero p {
@@ -242,7 +248,8 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            position: relative;
         }
 
         .section-title h2 {
@@ -265,215 +272,54 @@
             box-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* ============================================================
-           SEZIONE REGOLAMENTO STILE DASHBOARD (DALL'IMMAGINE)
-           ============================================================ */
-        .regolamento-ui {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 20px;
-            background: rgba(10, 6, 3, 0.85);
-            padding: 10px;
-            border-radius: 6px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-            border: 1px solid rgba(255, 153, 0, 0.2);
-        }
-
-        /* Sidebar Categorie */
-        .reg-sidebar {
-            background: rgba(18, 11, 5, 0.95);
-            border: 1px solid var(--reg-border);
-            border-radius: 6px;
-            padding: 20px 15px;
-        }
-
-        .reg-sidebar-title {
-            font-size: 0.75rem;
-            font-weight: 900;
-            color: var(--reg-text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 153, 0, 0.15);
-        }
-
-        .reg-menu-group {
-            margin-bottom: 15px;
-        }
-
-        .reg-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ddd;
-            text-transform: uppercase;
-            padding: 8px 5px;
-            cursor: pointer;
-        }
-
-        .reg-menu-items {
-            list-style: none;
-            margin-top: 5px;
-            padding-left: 10px;
-        }
-
-        .reg-menu-items li {
-            font-size: 0.82rem;
-            font-weight: 700;
-            padding: 8px 12px;
-            color: #888;
-            margin-bottom: 4px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .reg-menu-items li.active {
-            background: rgba(255, 153, 0, 0.15);
-            color: var(--reg-accent);
-            border-left: 3px solid var(--reg-accent);
-        }
-
-        .reg-menu-items li:hover:not(.active) {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .reg-item-disabled {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.82rem;
-            font-weight: 800;
-            color: #666;
-            padding: 10px 5px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        /* Content Panel */
-        .reg-content-panel {
-            background: rgba(18, 11, 5, 0.95);
-            border: 1px solid var(--reg-border);
-            border-radius: 6px;
-            padding: 35px;
-        }
-
-        .reg-header-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .reg-icon-box {
-            background: rgba(255, 153, 0, 0.1);
-            border: 1px solid var(--reg-accent);
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            font-size: 1.4rem;
-        }
-
-        .reg-header-text h3 {
-            font-family: 'Teko', sans-serif;
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            color: #fff;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        .reg-header-text span {
-            font-size: 0.75rem;
-            color: var(--reg-text-muted);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .reg-block {
-            margin-bottom: 35px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 153, 0, 0.1);
-        }
-
-        .reg-block:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .reg-badge-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .reg-number {
-            background: var(--reg-accent);
-            color: #000;
-            font-weight: 900;
-            font-size: 0.8rem;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 3px;
-        }
-
-        .reg-badge-title h4 {
-            font-size: 0.95rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        .reg-text {
-            color: #ccc;
-            font-size: 0.92rem;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        .tag-ooc {
-            background: rgba(255, 153, 0, 0.2);
-            color: var(--reg-accent);
-            border: 1px solid var(--reg-accent);
-            padding: 2px 6px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            border-radius: 3px;
-            display: inline-block;
-        }
-
-        .tag-ic {
-            background: rgba(255, 153, 0, 0.2);
-            color: var(--reg-accent);
-            border: 1px solid var(--reg-accent);
-            padding: 2px 6px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            border-radius: 3px;
-            display: inline-block;
-        }
-
-        /* GRID CARDS (BANDI) */
+        /* GRID CARDS */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 25px;
         }
 
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 5px solid var(--primary);
+            padding: 30px;
+            transform: skewX(-4deg);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+        }
+
+        .card > * {
+            transform: skewX(4deg);
+        }
+
+        .card:hover {
+            transform: skewX(-4deg) translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: -5px 5px 0px #000, 0 0 25px var(--primary-glow);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* BANDI CONCORSI GTA STYLE */
         .bando-card {
             background: var(--card-bg);
             border: 1px solid #222;
@@ -487,7 +333,9 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.8);
         }
 
-        .bando-card > * { transform: skewX(3deg); }
+        .bando-card > * {
+            transform: skewX(3deg);
+        }
 
         .bando-card:hover {
             transform: skewX(-3deg) translateY(-6px);
@@ -571,7 +419,7 @@
             color: #fff;
         }
 
-        /* MODAL */
+        /* MODAL FIVEM STYLE */
         .modal {
             display: none;
             position: fixed;
@@ -584,7 +432,9 @@
             padding: 20px;
         }
 
-        .modal.active { display: flex; }
+        .modal.active {
+            display: flex;
+        }
 
         .modal-content {
             background: #0d0e12;
@@ -599,7 +449,9 @@
             transform: skewX(-2deg);
         }
 
-        .modal-content > * { transform: skewX(2deg); }
+        .modal-content > * {
+            transform: skewX(2deg);
+        }
 
         .close-modal {
             position: absolute;
@@ -613,7 +465,9 @@
 
         .close-modal:hover { color: var(--primary); }
 
-        .form-group { margin-bottom: 20px; }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
         .form-group label {
             display: block;
@@ -672,7 +526,9 @@
             transition: all 0.2s ease;
         }
 
-        .social-btn span { transform: skewX(10deg); }
+        .social-btn span {
+            transform: skewX(10deg);
+        }
 
         .social-btn:hover {
             background: var(--primary);
@@ -686,18 +542,14 @@
             font-weight: 600;
         }
 
-        @media (max-width: 900px) {
-            .regolamento-ui { grid-template-columns: 1fr; }
-        }
-
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; }
             nav { flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 3.5rem; }
             .btn-group { flex-direction: column; width: 100%; }
             .btn { width: 100%; }
-            .bando-card, .modal-content { transform: none !important; }
-            .bando-card > *, .modal-content > * { transform: none !important; }
+            .card, .bando-card, .modal-content { transform: none !important; }
+            .card > *, .bando-card > *, .modal-content > * { transform: none !important; }
         }
     </style>
 </head>
@@ -711,7 +563,7 @@
         </div>
         <nav>
             <a href="#home"><span>Home</span></a>
-            <a href="#regolamento"><span>Regolamento</span></a>
+            <a href="#regolamento"><span>Regole</span></a>
             <a href="#bandi"><span>Bandi Concorsi</span></a>
             <a href="#whitelist"><span>Whitelist</span></a>
         </nav>
@@ -721,7 +573,7 @@
     <section class="hero" id="home">
         <div class="hero-banner"><span>⚡ FIVEM WHITELIST FULL RP — ROMA CAPITAL ⚡</span></div>
         <h1>ROMA VERTICE <span>ROLEPLAY</span></h1>
-        <p>Vivi un'esperienza di gioco senza precedenti nella Capitale. Consulta la nostra guida ufficiale ed arruolati nelle Forze dell'Ordine o nel Soccorso Sanitario.</p>
+        <p>Vivi un'esperienza di gioco senza precedenti nella Capitale. Arruolati nelle Forze dell'Ordine o nel Soccorso Sanitario inviando subito la tua candidatura ai concorsi ufficiali.</p>
         <div class="btn-group">
             <a href="https://discord.gg/tuolink" target="_blank" class="btn"><span>DISCORD UFFICIALE</span></a>
             <a href="#bandi" class="btn btn-secondary"><span>BANDI STATALI</span></a>
@@ -730,109 +582,31 @@
 
     <div class="container">
 
-        <!-- SEZIONE REGOLAMENTO (RICREATA DALL'IMMAGINE) -->
-        <section id="regolamento" style="margin-top: 40px;">
+        <!-- REGOLAMENTO SINTETICO -->
+        <section id="regolamento">
             <div class="section-title">
-                <h2>📜 REGOLAMENTO UFFICIALE</h2>
+                <h2>📜 REGOLE FONDAMENTALI</h2>
             </div>
-
-            <div class="regolamento-ui">
-                
-                <!-- SIDEBAR CATEGORIE -->
-                <div class="reg-sidebar">
-                    <div class="reg-sidebar-title">CATEGORIE</div>
-                    
-                    <div class="reg-menu-group">
-                        <div class="reg-menu-header">
-                            <span>📖 GUIDA AL GIOCO</span>
-                            <span>˅</span>
-                        </div>
-                        <ul class="reg-menu-items">
-                            <li class="active">Definizione di Roleplay</li>
-                            <li>Principi Fondamentali</li>
-                        </ul>
-                    </div>
-
-                    <div class="reg-item-disabled">
-                        <span>📋 LINEE GUIDA</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>👤 PERSONAGGIO</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>👊 AZIONI & INGAGGI</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>🕶️ CRIMINE</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>💀 PERMADEATH</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>⚖️ LEGALITÀ & FDO</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>⚠️ SCALA DEL PERICOLO</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>📈 SKILLS</span>
-                        <span>›</span>
-                    </div>
-                    <div class="reg-item-disabled">
-                        <span>🕹️ GAME MASTER</span>
-                        <span>›</span>
-                    </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>METAGAMING (MG)</h3>
+                    <p>Vietato usare informazioni extra-game per avvantaggiare il tuo personaggio in città.</p>
                 </div>
-
-                <!-- CONTENUTO PRINCIPALE -->
-                <div class="reg-content-panel">
-                    
-                    <div class="reg-header-box">
-                        <div class="reg-icon-box">📄</div>
-                        <div class="reg-header-text">
-                            <h3>DEFINIZIONE DI ROLEPLAY</h3>
-                            <span>GUIDA AL GIOCO — SEZIONE 1</span>
-                        </div>
-                    </div>
-
-                    <!-- BLOCCO 1: COS'È IL ROLEPLAY -->
-                    <div class="reg-block">
-                        <div class="reg-badge-title">
-                            <span class="reg-number">1</span>
-                            <h4>COS'È IL ROLEPLAY</h4>
-                        </div>
-                        <p class="reg-text">
-                            Il Roleplay consiste nel rappresentare un personaggio con un ruolo ben specifico nel rispetto delle regole vigenti all'interno del server, al fine di far parte del gioco di ruolo stesso. Ogni player dovrà essere un vero e proprio attore del proprio personaggio, interpretando al meglio tutto ciò che il proprio personaggio rispecchia come accenti, carattere, doti.<br><br>
-                            Ricordando in particolar modo che tutto ciò che si evolve all'interno del gioco di ruolo, né resta all'interno.
-                        </p>
-                    </div>
-
-                    <!-- BLOCCO 2: OOC E IC -->
-                    <div class="reg-block">
-                        <div class="reg-badge-title">
-                            <span class="reg-number">2</span>
-                            <h4>OOC E IC</h4>
-                        </div>
-                        <p class="reg-text">
-                            <span class="tag-ooc">OOC</span> è l'abbreviazione di <strong>Out of Character</strong> (Fuori dal proprio Personaggio).<br><br>
-                            <span class="tag-ic">IC</span> significa <strong>In Character</strong> (All'interno del proprio Personaggio).<br><br>
-                            Questi due ambiti devono rimanere sempre separati. Informazioni apprese OOC non possono influenzare le azioni IC, e viceversa.
-                        </p>
-                    </div>
-
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>POWERGAMING (PG)</h3>
+                    <p>Vietato compiere azioni fisicamente impossibili o forzare il Roleplay degli altri giocatori.</p>
                 </div>
-
+                <div class="card">
+                    <div class="card-icon">💀</div>
+                    <h3>NO FEAR (FEAR LIFE)</h3>
+                    <p>Rispetta la vita del tuo personaggio come fosse reale di fronte a minacce armate.</p>
+                </div>
             </div>
         </section>
 
-        <!-- BANDI E CONCORSI STATALI -->
+        <!-- SEZIONE BANDI E CONCORSI STATALI -->
         <section id="bandi" style="margin-top: 90px;">
             <div class="section-title">
                 <h2>🏛️ BANDI & CONCORSI PUBBLICI</h2>
@@ -917,7 +691,7 @@
 
     </div>
 
-    <!-- MODAL CANDIDATURA -->
+    <!-- MODAL DI FORM CANDIDATURA BANDO -->
     <div class="modal" id="bandoModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeBandoModal()">&times;</span>
